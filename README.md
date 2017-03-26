@@ -1,7 +1,7 @@
 # Smart-HeatPump-Controller
 Makes a dumb temp/time defrost heatpump smarter.
 
-The Problem I am trying to solve:
+## The Problem I am trying to solve:
 
 Some heatpumps are not very smart when it comes to initiating defrost.  These heat pumps consist of a thermo switch connected directly to the coil of the heat pump and a defrost board that has a selectable timer via a jumper.
 When the coil temp falls below 32F the thermo switch closes which allows 24VAC to flow through it to the timer.  This starts the timer and it starts counting run time.  If the timer is set to 90 minutes then the timer will be up after 90 minutes of run time (idle time doesn't count).  One the timer is up the defrost board will initiate defrost which reverses the flow of refrigerant through the unit (goes into cooling mode) which heats the coil and melts the frost.  Once the thermo switch reaches 70F on the coil it opens and defrost is shut off.
@@ -10,12 +10,12 @@ This is all good but on most systems when defrost is active the registers inside
 The problem is that in most cases there is no need to defrost and it goes into defrost mode when there is no frost whatsoever on the coil.  It could be 50F outside and the thermo switch see 32F for 1 sec and the unit defrosts at the end of the timer.  The thermo switch once closed will not reopen until it sees 70F.
 
 
-Smart Heatpumps??:
+## Smart Heatpumps??:
 
 Some heatpump out there are smarter and use 2 temperature sensors to determine when to defrost.  It monitors the outside/ambient temperature and also the coil temperature of the heatpump.  Normally it won't let defrost activate at all if the outside temp is over 45F or so.  If outside temp is below that threshold then it looks at the coil temp.  Coil temp has to be below a certain threshold as well, we will say 32F for example.  It then uses an algorithm to determine if the difference between the outside temp and the coil temp is bigger then a percentage of the coil temp.  If the difference is big enough and stays that way for a length of time the unit will initiate defrost.  Way smarter than the dumb way and will go into defrost mode way less often (costs less since less aux heat activation).
 
 
-My Solution:
+## My Solution:
 
 Using a NodeMCU, 2xDS18B20 temp sensors, a 5V relay board, a 5V 2A phone charger, a piece of pcb, and a small enclosue I have made my heatpump smarter.
 
@@ -26,6 +26,6 @@ Change the addresses of the sensors in the sketch at lines 77 and 78 to your add
 I am also using a javascript page (found here: http://community.thingspeak.com/forum/announcements/thingspeak-live-chart-multi-channel-second-axis-historical-data-csv-export/ ) for pulling and monitoring thingspeak data in a much better graph .  You can actually see when the heatpump defrosts by watching the coil temp (it will rise quickly and spike).
 
 
-My advice:
+## My advice:
 
 I suggest getting the project ready and attach sensors to heatpump but do not attach the thermo switch to the relay yet.  This will let you monitor the heatpump for a few days and you can see when your code triggers cheating and possible defrosting while watching the temps.  After you are satisfied you can connect one wire of the thermo switch through the relay.
