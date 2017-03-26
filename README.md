@@ -29,3 +29,8 @@ I am also using a javascript page (found here: http://community.thingspeak.com/f
 ## My advice:
 
 I suggest getting the project ready and attach sensors to heatpump but do not attach the thermo switch to the relay yet.  This will let you monitor the heatpump for a few days and you can see when your code triggers cheating and possible defrosting while watching the temps.  After you are satisfied you can connect one wire of the thermo switch through the relay.
+
+## Legal:
+
+Use of this software is at your own risk.
+I will not be held responsible for any damages, direct or indirect, to any equipment or person/s who uses this software.
