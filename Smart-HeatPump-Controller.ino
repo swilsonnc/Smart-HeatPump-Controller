@@ -84,7 +84,7 @@ const int sensorPipetemp = 1;
 
 // Stock defrost threshold
 
-float defrostThreshold = 2.5; // Divider used to determine defrostThreshold
+float defrostThreshold = 1.8; // Divider used to determine defrostThreshold
 
 // Global variables
 
